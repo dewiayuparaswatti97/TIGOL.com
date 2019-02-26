@@ -105,7 +105,7 @@
             android:layout_marginEnd="31dp"
             android:layout_marginRight="31dp"
             android:layout_marginBottom="159dp"
-            android:text="Bandung"
+            android:text="Bandung lautan"
             android:textColor="@android:color/black"
             android:textSize="40sp"
             android:textStyle="bold" />
