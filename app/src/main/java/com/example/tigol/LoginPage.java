@@ -16,8 +16,6 @@ public class LoginPage extends AppCompatActivity {
     private TextView tvForgot;
     private TextView tvDaftar;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
