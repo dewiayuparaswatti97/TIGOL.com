@@ -11,9 +11,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ForgotPassword"></activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterPage" />
+        <activity android:name=".RegisterPage" android:theme="@style/AppTheme.NoActioBar"/>
         <activity android:name=".SplashScreen" />
-        <activity android:name=".LoginPage">
+        <activity android:name=".LoginPage" android:theme="@style/AppTheme.NoActioBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
