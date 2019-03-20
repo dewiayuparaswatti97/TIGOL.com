@@ -20,7 +20,7 @@ public class ForgotPassword extends AppCompatActivity {
         edtemail = findViewById(R.id.edt_emailforget);
         btnforget = findViewById(R.id.btn_submitforget);
 
-        edtemail.setOnClickListener(new View.OnClickListener() {
+        btnforget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ForgotPassword.this, LoginPage.class);

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ForgotPassword"></activity>
+        <activity android:name=".ForgotPassword" android:theme="@style/AppTheme.NoActioBar"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterPage" android:theme="@style/AppTheme.NoActioBar"/>
         <activity android:name=".LoginPage" android:theme="@style/AppTheme.NoActioBar">
