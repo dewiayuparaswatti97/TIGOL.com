@@ -153,6 +153,7 @@
             android:layout_marginRight="32dp"
             android:background="@color/colorPrimaryRed"
             android:gravity="center"
+            android:onClick="login"
             android:text="Login"
             android:textColor="@android:color/white"
             android:textSize="20sp"
