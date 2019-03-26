@@ -40,15 +40,15 @@ public class LoginPage extends AppCompatActivity {
         tvForgot = findViewById(R.id.tv_forgetpass);
         tvDaftar = findViewById(R.id.tv_daftar);
 
-        tvDaftar.setOnClickListener(new View.OnClickListener(){
-            public void onClick (View view){
+        tvDaftar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 Intent intent = new Intent(LoginPage.this, RegisterPage.class);
                 startActivity(intent);
             }
         });
 
-        tvForgot.setOnClickListener(new View.OnClickListener(){
-            public void onClick (View view){
+        tvForgot.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 Intent intent = new Intent(LoginPage.this, ForgotPassword.class);
                 startActivity(intent);
             }
@@ -56,20 +56,36 @@ public class LoginPage extends AppCompatActivity {
 
     }
 
-    public void login(View view){
-        frAuth.signInWithEmailAndPassword(enterEmail.getText().toString(),enterPassword.getText().toString())
+
+    public void login(View view) {
+
+        if (!validate())
+            return;
+        frAuth.signInWithEmailAndPassword(enterEmail.getText().toString(), enterPassword.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Intent intent = new Intent(LoginPage.this, MainActivity.class);
                             startActivity(intent);
-                        }
-                        else {
+                        } else {
                             Toast.makeText(LoginPage.this, "Login Gagal", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+    }
 
+    //anti empty
+    private boolean validate() {
+        boolean isValid = true;
+        if (enterEmail.getText().toString().equals("")) {
+            enterEmail.setError("Email kosong, tolong diisi.");
+            isValid = false;
+        }
+        if (enterPassword.getText().toString().equals("")) {
+            enterPassword.setError("Password kosong, tolong diisi.");
+            isValid = false;
+        }
+        return isValid;
     }
 }

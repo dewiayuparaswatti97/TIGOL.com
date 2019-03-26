@@ -69,6 +69,7 @@ public class RegisterPage extends AppCompatActivity {
                 });
     }
 
+    //anti empty
     private boolean validate() {
         boolean isValid = true;
         if (regsEmail.getText().toString().equals("")) {

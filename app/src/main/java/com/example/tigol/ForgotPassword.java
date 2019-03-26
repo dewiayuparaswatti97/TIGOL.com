@@ -34,7 +34,8 @@ public class ForgotPassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //forget password method bla bla
-
+                if (!validate())
+                    return;
                 email = edtemail.getText().toString();
                 frAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -51,5 +52,15 @@ public class ForgotPassword extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    //anti empty
+    private boolean validate() {
+        boolean isValid = true;
+        if (edtemail.getText().toString().equals("")) {
+            edtemail.setError("Email kosong, tolong diisi.");
+            isValid = false;
+        }
+        return isValid;
     }
 }
