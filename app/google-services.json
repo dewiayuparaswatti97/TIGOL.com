@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "453279283022",
+    "firebase_url": "https://tigol-cf6af.firebaseio.com",
+    "project_id": "tigol-cf6af",
+    "storage_bucket": "tigol-cf6af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453279283022:android:412bc24daa2420a8",
+        "android_client_info": {
+          "package_name": "com.example.tigol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453279283022-0emp7680tpedaidh3m7t3us12t1nr6b6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tigol",
+            "certificate_hash": "edde2190332a5c364c5f619dd17b43eff2e76945"
+          }
+        },
+        {
+          "client_id": "453279283022-td72ma4pdq287kqjtjv172f4n8t364dc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVeRb3v7sjkUHEhshZvyrmuNoxjD52BrA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453279283022-td72ma4pdq287kqjtjv172f4n8t364dc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
