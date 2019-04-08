@@ -14,16 +14,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LoginPage extends AppCompatActivity {
 
-    private EditText enterEmail;
-    private EditText enterPassword;
+    private EditText email;
+    private EditText pass;
     private Button btnLogin;
     private TextView tvForgot;
     private TextView tvDaftar;
-    private FirebaseAuth frAuth;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +30,11 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
 
         //firebase
-        frAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
 
-        enterEmail = findViewById(R.id.edt_emaillogin);
-        enterPassword = findViewById(R.id.edt_passlogin);
+        email = findViewById(R.id.edt_emaillogin);
+        pass = findViewById(R.id.edt_passlogin);
         btnLogin = findViewById(R.id.btn_login);
         tvForgot = findViewById(R.id.tv_forgetpass);
         tvDaftar = findViewById(R.id.tv_daftar);
@@ -61,7 +60,7 @@ public class LoginPage extends AppCompatActivity {
 
         if (!validate())
             return;
-        frAuth.signInWithEmailAndPassword(enterEmail.getText().toString(), enterPassword.getText().toString())
+        mAuth.signInWithEmailAndPassword(email.getText().toString(), pass.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -78,12 +77,12 @@ public class LoginPage extends AppCompatActivity {
     //anti empty
     private boolean validate() {
         boolean isValid = true;
-        if (enterEmail.getText().toString().equals("")) {
-            enterEmail.setError("Email kosong, tolong diisi.");
+        if (email.getText().toString().equals("")) {
+            email.setError("email kosong, tolong diisi.");
             isValid = false;
         }
-        if (enterPassword.getText().toString().equals("")) {
-            enterPassword.setError("Password kosong, tolong diisi.");
+        if (pass.getText().toString().equals("")) {
+            pass.setError("Password kosong, tolong diisi.");
             isValid = false;
         }
         return isValid;
