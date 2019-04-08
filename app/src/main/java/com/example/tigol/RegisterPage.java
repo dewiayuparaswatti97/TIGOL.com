@@ -15,6 +15,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterPage extends AppCompatActivity {
 
@@ -58,6 +60,13 @@ public class RegisterPage extends AppCompatActivity {
                             FirebaseUser user = frAuth.getCurrentUser();
                             UserProfileChangeRequest builderUser = new UserProfileChangeRequest.Builder().setDisplayName(regsNama.getText().toString()).build();
                             user.updateProfile(builderUser);
+
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+                            ref.child("status").setValue("User");
+                            ref.child("email").setValue(regsEmail.getText().toString());
+                            ref.child("nama").setValue(regsNama.getText().toString());
+
+
                             Toast.makeText(RegisterPage.this, "Register berhasil!", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(RegisterPage.this, LoginPage.class);
                             startActivity(intent);
