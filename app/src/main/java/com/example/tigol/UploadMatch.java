@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -18,14 +19,18 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
@@ -43,10 +48,11 @@ import java.util.Map;
 public class UploadMatch extends AppCompatActivity {
     int REQUEST = 91, REQUEST_GET_SINGLE_FILE = 202, REQUEST_CAPTURE_IMAGE = 234;
     Bitmap bitmap;
-    ImageView foto;
+    ImageView foto, foto2;
     FirebaseFirestore db;
     FirebaseAuth mAuth;
     Uri uri;
+    Spinner spinnerHome, spinnerAway;
     String imagePath;
     EditText namamatch, harga, tanggal, waktu;
 
@@ -65,6 +71,7 @@ public class UploadMatch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uploadmatch);
         foto = findViewById(R.id.inImg);
+        foto2 = findViewById(R.id.inImg2);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         //Init
@@ -74,6 +81,8 @@ public class UploadMatch extends AppCompatActivity {
         harga = findViewById(R.id.edHargaInput);
         tanggal = findViewById(R.id.edDeskInput);
         waktu = findViewById(R.id.edJamInput);
+        spinnerHome = findViewById(R.id.spinner);
+        spinnerAway = findViewById(R.id.spinner2);
 
         progressBar = findViewById(R.id.progressBar);
 
@@ -82,79 +91,116 @@ public class UploadMatch extends AppCompatActivity {
                 .build();
         db.setFirestoreSettings(settings);
 
+        //spinner
+        final TypedArray imgs = getResources().obtainTypedArray(R.array.DaftarGambar);
+        spinnerHome.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                foto.setImageResource(imgs.getResourceId(position,-1));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinnerAway.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                foto2.setImageResource(imgs.getResourceId(position,-1));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
 
     @SuppressLint("StaticFieldLeak")
     public void tambahMenu(View view) {
-        new AsyncTask<Void, Boolean, Boolean>() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Match");
+        String key = ref.push().getKey();
+        ref = ref.child(key);
+        ref.child("nama").setValue(namamatch.getText().toString());
+        ref.child("Home").setValue(spinnerHome.getSelectedItem().toString());
+        ref.child("Away").setValue(spinnerAway.getSelectedItem().toString());
+        ref.child("harga").setValue(harga.getText().toString());
+        ref.child("tanggal").setValue(tanggal.getText().toString());
+        ref.child("jam").setValue(waktu.getText().toString());
+        finish();
 
-
-            @Override
-            protected void onPreExecute() {
-                progressBar.setVisibility(View.VISIBLE);
-                menu = new HashMap<>();
-
-                super.onPreExecute();
-            }
-
-            @Override
-            protected void onPostExecute(Boolean aBoolean) {
-                if (aBoolean) {
-                    Toast.makeText(UploadMatch.this, "Berhasil", Toast.LENGTH_SHORT).show();
-                    finish();
-
-                }
-                super.onPostExecute(aBoolean);
-            }
-
-            @Override
-            protected Boolean doInBackground(Void... voids) {
-                menu.put("NamaMenu", namamatch.getText().toString());
-                menu.put("Harga", harga.getText().toString());
-                menu.put("Deskripsi", tanggal.getText().toString());
-                menu.put("Waktu",waktu.getText().toString());
-                menu.put("Date",new SimpleDateFormat().format(new Date()));
-
-
-                db.collection(mAuth.getUid())
-                        .add(menu)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-//                                docRef = documentReference.getId();
-                                //Upload data berhasil;
-                                success = true;
-                                if (uri != null) {
-                                    StorageReference ref = storageReference.child("images/" + documentReference.getId());
-                                    ref.putFile(uri)
-                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                                @Override
-                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                                    Toast.makeText(UploadMatch.this, "Uploaded", Toast.LENGTH_SHORT).show();
-
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(UploadMatch.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                }
-
-                                            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                                            Toast.makeText(UploadMatch.this, "Uploading..", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                }
-                                finish();
-                                progressBar.setVisibility(View.GONE);
-                            }
-                        });
-
-                return success;
-            }
-        }.execute();
+//        new AsyncTask<Void, Boolean, Boolean>() {
+//
+//
+//            @Override
+//            protected void onPreExecute() {
+//                progressBar.setVisibility(View.VISIBLE);
+//                menu = new HashMap<>();
+//
+//                super.onPreExecute();
+//            }
+//
+//            @Override
+//            protected void onPostExecute(Boolean aBoolean) {
+//                if (aBoolean) {
+//                    Toast.makeText(UploadMatch.this, "Berhasil", Toast.LENGTH_SHORT).show();
+//                    finish();
+//
+//                }
+//                super.onPostExecute(aBoolean);
+//            }
+//
+//            @Override
+//            protected Boolean doInBackground(Void... voids) {
+//                menu.put("NamaMenu", namamatch.getText().toString());
+//                menu.put("Harga", harga.getText().toString());
+//                menu.put("Deskripsi", tanggal.getText().toString());
+//                menu.put("Waktu",waktu.getText().toString());
+//                menu.put("Date",new SimpleDateFormat().format(new Date()));
+//
+//
+//                db.collection(mAuth.getUid())
+//                        .add(menu)
+//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                            @Override
+//                            public void onSuccess(DocumentReference documentReference) {
+////                                docRef = documentReference.getId();
+//                                //Upload data berhasil;
+//                                success = true;
+//                                if (uri != null) {
+//                                    StorageReference ref = storageReference.child("images/" + documentReference.getId());
+//                                    ref.putFile(uri)
+//                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                                                @Override
+//                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                                    Toast.makeText(UploadMatch.this, "Uploaded", Toast.LENGTH_SHORT).show();
+//
+//                                                }
+//                                            })
+//                                            .addOnFailureListener(new OnFailureListener() {
+//                                                @Override
+//                                                public void onFailure(@NonNull Exception e) {
+//                                                    Toast.makeText(UploadMatch.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                                                }
+//
+//                                            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                                        @Override
+//                                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+//                                            Toast.makeText(UploadMatch.this, "Uploading..", Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    });
+//                                }
+//                                finish();
+//                                progressBar.setVisibility(View.GONE);
+//                            }
+//                        });
+//
+//                return success;
+//            }
+//        }.execute();
 
     }
 

@@ -21,6 +21,7 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ViewHolder> {
+    //Card ganti jadi Match
     private ArrayList<Card> daftarChat;
     private Context mContext;
 
@@ -55,6 +56,7 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ViewHolder> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            //Setter atau find view sesuai XML
             nama = itemView.findViewById(R.id.txJudulCard);
             harga = itemView.findViewById(R.id.txHarga);
             image = itemView.findViewById(R.id.cardImg);
@@ -65,6 +67,7 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ViewHolder> {
 
         @SuppressLint("StaticFieldLeak")
         public void bindTo(final Card card) {
+            //PArameter MAtch
             nama.setText(card.getNama());
             harga.setText(card.getHarga());
 

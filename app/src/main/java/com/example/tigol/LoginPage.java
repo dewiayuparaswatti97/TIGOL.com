@@ -14,6 +14,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginPage extends AppCompatActivity {
 
@@ -22,6 +27,7 @@ public class LoginPage extends AppCompatActivity {
     private Button btnLogin;
     private TextView tvForgot;
     private TextView tvDaftar;
+    private TextView tvAdmin;
     private FirebaseAuth mAuth;
 
     @Override
@@ -38,6 +44,7 @@ public class LoginPage extends AppCompatActivity {
         btnLogin = findViewById(R.id.btn_login);
         tvForgot = findViewById(R.id.tv_forgetpass);
         tvDaftar = findViewById(R.id.tv_daftar);
+        tvAdmin = findViewById(R.id.tv_loginadmin);
 
         tvDaftar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -49,6 +56,13 @@ public class LoginPage extends AppCompatActivity {
         tvForgot.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginPage.this, ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
+
+        tvAdmin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginPage.this, RegisterPageAdmin.class);
                 startActivity(intent);
             }
         });
@@ -65,8 +79,27 @@ public class LoginPage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(LoginPage.this, MainActivity.class);
-                            startActivity(intent);
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid()).child("status");
+                            ref.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    Intent intent;
+                                    if (dataSnapshot.getValue().equals("Admin")){
+                                        intent = new Intent(LoginPage.this, UploadMatch.class);
+                                    }
+                                    else {
+                                        intent = new Intent(LoginPage.this, MainActivity.class);
+                                    }
+                                    startActivity(intent);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
+                            });
+
+
                         } else {
                             Toast.makeText(LoginPage.this, "Login Gagal", Toast.LENGTH_LONG).show();
                         }

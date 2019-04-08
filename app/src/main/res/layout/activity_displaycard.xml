@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background=""
     tools:context=".DisplayCard">
 
     <android.support.v7.widget.RecyclerView
@@ -68,7 +67,8 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrowleftblack" />
+        app:srcCompat="@drawable/ic_arrowleftblack"
+        tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/textView5"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Teamlist">
+        <item>Arema Malang</item>
+        <item>Bali United</item>
+        <item>Barito Putera</item>
+        <item>Gresik United</item>
+        <item>Persela Lamongan</item>
+        <item>Persib Bandung</item>
+        <item>Persija Jakarta</item>
+        <item>Persipura Jayapura</item>
+        <item>PSMS Medan</item>
+        <item>Semen Padang</item>
+    </string-array>
+
+    <integer-array name="DaftarGambar">
+        <item>@drawable/aremamalang</item>
+        <item>@drawable/baliunited</item>
+        <item>@drawable/baritoputera</item>
+        <item>@drawable/gresikunited</item>
+        <item>@drawable/perselalamongan</item>
+        <item>@drawable/persibbandung</item>
+        <item>@drawable/persijajakarta</item>
+        <item>@drawable/persipurajayapura</item>
+        <item>@drawable/psmsmedan</item>
+        <item>@drawable/semenpadang</item>
+    </integer-array>
+</resources>
