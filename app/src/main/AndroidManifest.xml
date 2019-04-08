@@ -9,22 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-      
         <activity android:name=".AdminLogin"></activity>
         <activity android:name=".PaymentPage"></activity>
-        <activity
-            android:name=".ForgotPassword"
-            android:theme="@style/AppTheme.NoActioBar" />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActioBar" />
-        <activity
-            android:name=".RegisterPage"
-            android:theme="@style/AppTheme.NoActioBar" />
-        <activity
-            android:name=".LoginPage"
-            android:theme="@style/AppTheme.NoActioBar">
         <activity android:name=".ForgotPassword" android:theme="@style/AppTheme.NoActioBar"></activity>
         <activity android:name=".MainActivity" android:theme="@style/AppTheme.NoActioBar"/>
         <activity android:name=".RegisterPage" android:theme="@style/AppTheme.NoActioBar"/>
