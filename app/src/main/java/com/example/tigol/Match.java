@@ -60,9 +60,6 @@ public class Match {
         return stadium;
     }
 
-    public void setStadium(String stadium) {
-        this.stadium = stadium;
-    }
 }
 
 
