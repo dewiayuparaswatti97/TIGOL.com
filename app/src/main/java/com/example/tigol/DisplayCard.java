@@ -67,7 +67,7 @@ public class DisplayCard extends AppCompatActivity {
     }
 
     public void add(View view) {
-        startActivityForResult(new Intent(DisplayCard.this, InputActivity.class), REQUEST_MENU);
+        startActivityForResult(new Intent(DisplayCard.this, UploadPay.class), REQUEST_MENU);
     }
 
 
