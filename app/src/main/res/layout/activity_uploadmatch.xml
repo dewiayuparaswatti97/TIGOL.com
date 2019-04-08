@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    tools:context=".UploadPay">
+    android:background="@color/colorPrimary"
+    tools:context=".UploadMatch">
 
 
     <ImageView
@@ -52,7 +52,7 @@
         android:layout_marginRight="16dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
-        android:hint="Masukkan Nama Menu"
+        android:hint="Masukan Nama Match"
         android:inputType="textPersonName"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
@@ -71,7 +71,7 @@
         android:layout_marginRight="16dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
-        android:hint=" Masukkan Harga Menu"
+        android:hint=" Masukkan Harga Match"
         android:inputType="numberSigned"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
@@ -82,18 +82,15 @@
     <EditText
         android:id="@+id/edDeskInput"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
-        android:gravity="center"
-        android:hint="Masukkan Deskripsi Menu"
+        android:hint="Masukkan Tanggal Bulan Tahun"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="@+id/edHargaInput"
         app:layout_constraintStart_toStartOf="@+id/edHargaInput"
         app:layout_constraintTop_toBottomOf="@+id/edHargaInput" />
@@ -130,5 +127,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edJamInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Masukkan Jam mulai dan jam akhir"
+
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
 </android.support.constraint.ConstraintLayout>

@@ -40,7 +40,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UploadPay extends AppCompatActivity {
+public class UploadMatch extends AppCompatActivity {
     int REQUEST = 91, REQUEST_GET_SINGLE_FILE = 202, REQUEST_CAPTURE_IMAGE = 234;
     Bitmap bitmap;
     ImageView foto;
@@ -48,7 +48,7 @@ public class UploadPay extends AppCompatActivity {
     FirebaseAuth mAuth;
     Uri uri;
     String imagePath;
-    EditText nama, harga, desk;
+    EditText namamatch, harga, tanggal, waktu;
 
     FirebaseStorage storage;
     StorageReference storageReference;
@@ -63,16 +63,17 @@ public class UploadPay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_uploadpay);
+        setContentView(R.layout.activity_uploadmatch);
         foto = findViewById(R.id.inImg);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         //Init
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        nama = findViewById(R.id.edNamaInput);
+        namamatch = findViewById(R.id.edNamaInput);
         harga = findViewById(R.id.edHargaInput);
-        desk = findViewById(R.id.edDeskInput);
+        tanggal = findViewById(R.id.edDeskInput);
+        waktu = findViewById(R.id.edJamInput);
 
         progressBar = findViewById(R.id.progressBar);
 
@@ -99,7 +100,7 @@ public class UploadPay extends AppCompatActivity {
             @Override
             protected void onPostExecute(Boolean aBoolean) {
                 if (aBoolean) {
-                    Toast.makeText(UploadPay.this, "Berhasil", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UploadMatch.this, "Berhasil", Toast.LENGTH_SHORT).show();
                     finish();
 
                 }
@@ -108,9 +109,10 @@ public class UploadPay extends AppCompatActivity {
 
             @Override
             protected Boolean doInBackground(Void... voids) {
-                menu.put("NamaMenu", nama.getText().toString());
+                menu.put("NamaMenu", namamatch.getText().toString());
                 menu.put("Harga", harga.getText().toString());
-                menu.put("Deskripsi", desk.getText().toString());
+                menu.put("Deskripsi", tanggal.getText().toString());
+                menu.put("Waktu",waktu.getText().toString());
                 menu.put("Date",new SimpleDateFormat().format(new Date()));
 
 
@@ -128,20 +130,20 @@ public class UploadPay extends AppCompatActivity {
                                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                                 @Override
                                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                                    Toast.makeText(UploadPay.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(UploadMatch.this, "Uploaded", Toast.LENGTH_SHORT).show();
 
                                                 }
                                             })
                                             .addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(UploadPay.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(UploadMatch.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                                 }
 
                                             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                                         @Override
                                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                                            Toast.makeText(UploadPay.this, "Uploading..", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(UploadMatch.this, "Uploading..", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
@@ -161,20 +163,20 @@ public class UploadPay extends AppCompatActivity {
     }
 
     public void selectPict(View view) {
-        if (ContextCompat.checkSelfPermission(UploadPay.this,
+        if (ContextCompat.checkSelfPermission(UploadMatch.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Permission is not granted
             // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(UploadPay.this,
+            if (ActivityCompat.shouldShowRequestPermissionRationale(UploadMatch.this,
                     Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
             } else {
                 // No explanation needed; request the permission
-                ActivityCompat.requestPermissions(UploadPay.this,
+                ActivityCompat.requestPermissions(UploadMatch.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST);
 

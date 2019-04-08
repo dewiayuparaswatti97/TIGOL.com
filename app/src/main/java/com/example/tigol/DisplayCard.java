@@ -12,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -67,7 +66,7 @@ public class DisplayCard extends AppCompatActivity {
     }
 
     public void add(View view) {
-        startActivityForResult(new Intent(DisplayCard.this, UploadPay.class), REQUEST_MENU);
+        startActivityForResult(new Intent(DisplayCard.this, UploadMatch.class), REQUEST_MENU);
     }
 
 
