@@ -85,7 +85,7 @@ public class LoginPage extends AppCompatActivity {
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     Intent intent;
                                     if (dataSnapshot.getValue().equals("Admin")){
-                                        intent = new Intent(LoginPage.this, UploadMatch.class);
+                                        intent = new Intent(LoginPage.this, MainAdmin.class);
                                     }
                                     else {
                                         intent = new Intent(LoginPage.this, MainActivity.class);

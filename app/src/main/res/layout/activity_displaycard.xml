@@ -23,24 +23,6 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="32dp"
-        android:onClick="add"
-        android:src="@drawable/ic_arrow"
-        app:backgroundTint="@color/colorPrimaryRed"
-        app:fabSize="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintCircleRadius="@android:dimen/app_icon_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="@color/colorAccent" />
-
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyle"

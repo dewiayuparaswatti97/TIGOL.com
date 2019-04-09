@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UploadMatch"></activity>
-        <activity android:name=".MainAdmin"></activity>
+        <activity android:name=".UploadMatch" android:theme="@style/AppTheme.NoActioBar" ></activity>
+        <activity android:name=".MainAdmin" android:theme="@style/AppTheme.NoActioBar" ></activity>
+        <activity android:name=".DisplayCard" android:theme="@style/AppTheme.NoActioBar"></activity>
         <activity
             android:name=".RegisterPageAdmin"
             android:theme="@style/AppTheme.NoActioBar" />
-        <activity android:name=".AdminLogin" />
         <activity
             android:name=".ForgotPassword"
             android:theme="@style/AppTheme.NoActioBar" />

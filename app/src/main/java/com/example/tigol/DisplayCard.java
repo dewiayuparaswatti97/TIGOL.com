@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 public class DisplayCard extends AppCompatActivity {
+    private ImageView arrow;
     RecyclerView recyclerView;
     ArrayList<Card> daftar;
     AdapterCard adapterCard;
@@ -40,12 +42,6 @@ public class DisplayCard extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void logout() {
-        mAuth.signOut();
-        startActivity(new Intent(DisplayCard.this, LoginPage.class));
-        finish();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +49,7 @@ public class DisplayCard extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         progressBarMain = findViewById(R.id.progressBar2);
+        arrow = findViewById(R.id.imageView4);
 
         recyclerView = findViewById(R.id.rvMain);
         daftar = new ArrayList<>();
@@ -61,14 +58,17 @@ public class DisplayCard extends AppCompatActivity {
         recyclerView.setAdapter(adapterCard);
         db = FirebaseFirestore.getInstance();
 
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DisplayCard.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         init();
 
     }
-
-    public void add(View view) {
-        startActivityForResult(new Intent(DisplayCard.this, UploadMatch.class), REQUEST_MENU);
-    }
-
 
     @SuppressLint("StaticFieldLeak")
     public void init() {
