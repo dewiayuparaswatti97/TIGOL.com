@@ -8,6 +8,48 @@
     tools:context=".UploadMatch">
 
 
+    <EditText
+        android:id="@+id/edHargaInputOutdoor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="@android:color/white"
+        android:ems="10"
+        android:hint=" Masukkan Harga Outdoor"
+        android:inputType="numberSigned"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edHargaInputReguler" />
+
+    <EditText
+        android:id="@+id/edHargaInputReguler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="@android:color/white"
+        android:ems="10"
+        android:hint=" Masukkan Harga Reguler"
+        android:inputType="numberSigned"
+        android:paddingLeft="5dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edHargaInputVIP" />
+
     <Spinner
         android:id="@+id/spinner2"
         android:layout_width="0dp"
@@ -83,7 +125,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <EditText
-        android:id="@+id/edHargaInput"
+        android:id="@+id/edHargaInputVIP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -93,9 +135,9 @@
         android:layout_marginRight="16dp"
         android:backgroundTint="@android:color/white"
         android:ems="10"
-        android:hint=" Masukkan Harga Match"
-        android:paddingLeft="5dp"
+        android:hint=" Masukkan Harga VIP"
         android:inputType="numberSigned"
+        android:paddingLeft="5dp"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,17 +149,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:paddingLeft="10dp"
-        android:textColorHint="@android:color/white"
         android:backgroundTint="@android:color/white"
         android:ems="10"
         android:hint="Masukkan Tanggal Bulan Tahun"
         android:inputType="textMultiLine"
+        android:paddingLeft="10dp"
         android:singleLine="false"
         android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@+id/edHargaInput"
-        app:layout_constraintStart_toStartOf="@+id/edHargaInput"
-        app:layout_constraintTop_toBottomOf="@+id/edHargaInput" />
+        android:textColorHint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@+id/edHargaInputVIP"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edHargaInputVIP"
+        app:layout_constraintTop_toBottomOf="@+id/edHargaInputOutdoor" />
 
     <Button
         android:id="@+id/button5"
@@ -201,5 +244,34 @@
         app:layout_constraintEnd_toEndOf="@+id/inImg"
         app:layout_constraintStart_toStartOf="@+id/inImg"
         app:layout_constraintTop_toBottomOf="@+id/inImg" />
+
+    <Spinner
+        android:id="@+id/spinner6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@android:color/white"
+        android:entries="@array/Stadium"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Stadium"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edJamInput" />
 
 </android.support.constraint.ConstraintLayout>
