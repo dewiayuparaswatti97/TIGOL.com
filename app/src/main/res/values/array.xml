@@ -13,6 +13,11 @@
         <item>Semen Padang</item>
     </string-array>
 
+    <string-array name="Stadium">
+        <item>Siliwangi Stadium</item>
+        <item>Gelora Bandung</item>
+    </string-array>
+
     <integer-array name="DaftarGambar">
         <item>@drawable/aremamalang</item>
         <item>@drawable/baliunited</item>

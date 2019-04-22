@@ -24,41 +24,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edt_searchmain"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@android:color/white"
-        android:ems="10"
-        android:hint="Search For..."
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btn_logoutmain"
-        app:layout_constraintStart_toEndOf="@+id/imv_magnifier"
-        app:layout_constraintTop_toBottomOf="@+id/btn_logoutmain" />
-
-    <ImageView
-        android:id="@+id/imv_magnifier"
-        android:layout_width="51dp"
-        android:layout_height="45dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/edt_searchmain"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_logoutmain"
-        app:srcCompat="@android:drawable/ic_menu_search" />
-
     <Button
         android:id="@+id/btn_yourticket"
         android:layout_width="wrap_content"
@@ -82,13 +47,13 @@
         android:layout_height="3dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_searchmain" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_logoutmain" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
@@ -131,35 +96,63 @@
             android:layout_marginLeft="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginBottom="16dp"
             android:text="In"
             android:textColor="@android:color/darker_gray"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_searchresult"
+            app:layout_constraintBottom_toTopOf="@+id/spinner3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_searchresult"
+        <Spinner
+            android:id="@+id/spinner4"
             android:layout_width="0dp"
-            android:layout_height="103dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Bandung lautan"
-            android:textColor="@android:color/black"
-            android:textSize="40sp"
+            android:layout_marginBottom="16dp"
+            android:entries="@array/Teamlist"
+            android:spinnerMode="dropdown"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Search for"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/spinner4"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="40dp"
+            android:entries="@array/Stadium"
+            android:spinnerMode="dropdown"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/fabMain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
