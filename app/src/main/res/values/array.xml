@@ -13,6 +13,12 @@
         <item>Semen Padang</item>
     </string-array>
 
+    <string-array name="Class">
+        <item>VIP</item>
+        <item>Reguler</item>
+        <item>Outdoor</item>
+    </string-array>
+    
     <string-array name="Stadium">
         <item>Siliwangi Stadium</item>
         <item>Gelora Bandung</item>
