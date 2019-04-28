@@ -1,21 +1,26 @@
 package com.example.tigol;
 
 public class Match {
-private String homeTeam, awayTeam, harga,jam,nama,tanggal;
+    private int homeTeam, awayTeam, stadium;
+    private String harga, jam, title, tanggal;
 
-    public String getHomeTeam() {
+    public int getStadium() {
+        return stadium;
+    }
+
+    public int getHomeTeam() {
         return homeTeam;
     }
 
-    public void setHomeTeam(String homeTeam) {
+    public void setHomeTeam(int homeTeam) {
         this.homeTeam = homeTeam;
     }
 
-    public String getAwayTeam() {
+    public int getAwayTeam() {
         return awayTeam;
     }
 
-    public void setAwayTeam(String awayTeam) {
+    public void setAwayTeam(int awayTeam) {
         this.awayTeam = awayTeam;
     }
 
@@ -35,12 +40,12 @@ private String homeTeam, awayTeam, harga,jam,nama,tanggal;
         this.jam = jam;
     }
 
-    public String getNama() {
-        return nama;
+    public String getTitle() {
+        return title;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getTanggal() {
@@ -51,12 +56,13 @@ private String homeTeam, awayTeam, harga,jam,nama,tanggal;
         this.tanggal = tanggal;
     }
 
-    public Match(String homeTeam, String awayTeam, String harga, String jam, String nama, String tanggal) {
+    public Match(int homeTeam, int awayTeam, int stadium, String harga, String jam, String title, String tanggal) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
+        this.stadium = stadium;
         this.harga = harga;
         this.jam = jam;
-        this.nama = nama;
+        this.title = title;
         this.tanggal = tanggal;
     }
 }
