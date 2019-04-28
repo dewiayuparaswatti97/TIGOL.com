@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyTicket"></activity>
+        <activity android:name=".PaymentVerification"></activity>
+        <activity android:name=".CardVerfication" />
+        <activity android:name=".MyTicket" />
         <activity android:name=".TicketOrderDetail" />
         <activity android:name=".OrderTiket" />
         <activity
