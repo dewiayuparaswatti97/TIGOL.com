@@ -42,7 +42,7 @@ public class UploadMatch extends AppCompatActivity {
     FirebaseFirestore db;
     FirebaseAuth mAuth;
     Uri uri;
-    Spinner spinnerHome, spinnerAway;
+    Spinner spinnerHome, spinnerAway, spinnerStadium;
     String imagePath;
     EditText namamatch, harga, tanggal, waktu;
 
@@ -73,6 +73,7 @@ public class UploadMatch extends AppCompatActivity {
         waktu = findViewById(R.id.edJamInput);
         spinnerHome = findViewById(R.id.spinner);
         spinnerAway = findViewById(R.id.spinner2);
+        spinnerStadium = findViewById(R.id.spinnerStadium);
 
         progressBar = findViewById(R.id.progressBar);
 
@@ -115,11 +116,12 @@ public class UploadMatch extends AppCompatActivity {
         String key = ref.push().getKey();
         ref = ref.child(key);
         ref.child("nama").setValue(namamatch.getText().toString());
-        ref.child("Home").setValue(spinnerHome.getSelectedItem().toString());
-        ref.child("Away").setValue(spinnerAway.getSelectedItem().toString());
+        ref.child("Home").setValue(spinnerHome.getSelectedItemId());
+        ref.child("Away").setValue(spinnerAway.getSelectedItemId());
         ref.child("harga").setValue(harga.getText().toString());
         ref.child("tanggal").setValue(tanggal.getText().toString());
         ref.child("jam").setValue(waktu.getText().toString());
+        ref.child("stadium").setValue(spinnerStadium.getSelectedItemId());
         finish();
 
 //        new AsyncTask<Void, Boolean, Boolean>() {

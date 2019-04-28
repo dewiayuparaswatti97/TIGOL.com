@@ -78,6 +78,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             android:clickable="true"
+            android:src="@drawable/ic_arrow"
             app:backgroundTint="@color/colorPrimaryRed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,13 +102,13 @@
             android:textColor="@android:color/darker_gray"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/spinner3"
+            app:layout_constraintBottom_toTopOf="@+id/stadion_spinner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Spinner
-            android:id="@+id/spinner4"
+            android:id="@+id/tim_spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -133,11 +134,11 @@
             android:text="Search for"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/spinner4"
+            app:layout_constraintBottom_toTopOf="@+id/tim_spinner"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Spinner
-            android:id="@+id/spinner3"
+            android:id="@+id/stadion_spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
