@@ -43,6 +43,7 @@ public class DisplayCard extends AppCompatActivity {
     private MatchAdapter mAdapter;
     int timId;
     int stadionId;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -68,7 +69,7 @@ public class DisplayCard extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         Log.d("TimID", String.valueOf(timId));
 //        match.orderByChild('Firstname').equalTo().addValueEventListener(new ValueEventListener() {
-        match.orderByChild("Home").equalTo(timId).addValueEventListener(new ValueEventListener() {
+        match.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -77,16 +78,22 @@ public class DisplayCard extends AppCompatActivity {
                 mWorkerData.clear();
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String key = ds.child("key").getValue(String.class);
                     int homeTeam = ds.child("Home").getValue(Integer.class);
                     int awayTeam = ds.child("Away").getValue(Integer.class);
                     int stadium = ds.child("stadium").getValue(Integer.class);
-                    String harga = ds.child("harga").getValue(String.class);
-                    String jam = ds.child("jam").getValue(String.class);
-                    String title = ds.child("nama").getValue(String.class);
-                    String tanggal = ds.child("tanggal").getValue(String.class);
-                    Match ternak = new Match(homeTeam, awayTeam, stadium, harga, jam, title, tanggal);
-                    mWorkerData.add(ternak);
 
+                    if (stadium == stadionId && (homeTeam == timId || awayTeam == timId)) {
+                        int hargaOutdoor = ds.child("hargaOutdoor").getValue(Integer.class);
+                        int hargaReguler = ds.child("hargaReguler").getValue(Integer.class);
+                        int hargaVIP = ds.child("hargaVIP").getValue(Integer.class);
+                        String jam = ds.child("jam").getValue(String.class);
+                        String title = ds.child("nama").getValue(String.class);
+                        String tanggal = ds.child("tanggal").getValue(String.class);
+
+                        Match ternak = new Match(key, homeTeam, awayTeam, stadium, hargaVIP, hargaReguler, hargaOutdoor, jam, title, tanggal);
+                        mWorkerData.add(ternak);
+                    }
                 }
 
                 // Initialize the adapter and set it to the RecyclerView.

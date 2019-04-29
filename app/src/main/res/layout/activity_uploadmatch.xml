@@ -8,16 +8,6 @@
     tools:context=".UploadMatch">
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="0dp"
@@ -100,126 +90,10 @@
         app:layout_constraintStart_toStartOf="@+id/inImg2"
         app:layout_constraintTop_toBottomOf="@+id/inImg2" />
 
-    <EditText
-        android:id="@+id/edHargaInputOutdoor"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:backgroundTint="@android:color/white"
-        android:ems="10"
-        android:hint=" Masukkan Harga Outdoor"
-        android:inputType="numberSigned"
-        android:paddingLeft="5dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edHargaInputReguler" />
-
-    <EditText
-        android:id="@+id/edHargaInputReguler"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:backgroundTint="@android:color/white"
-        android:ems="10"
-        android:hint=" Masukkan Harga Reguler"
-        android:inputType="numberSigned"
-        android:paddingLeft="5dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edHargaInputVIP" />
-
-    <EditText
-        android:id="@+id/edNamaInput"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:backgroundTint="@android:color/white"
-        android:ems="10"
-        android:paddingLeft="10dp"
-        android:hint="Masukan Nama Match"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-    <EditText
-        android:id="@+id/edHargaInputVIP"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:backgroundTint="@android:color/white"
-        android:ems="10"
-        android:hint=" Masukkan Harga VIP"
-        android:inputType="numberSigned"
-        android:paddingLeft="5dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edNamaInput" />
-
-    <EditText
-        android:id="@+id/edDeskInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@android:color/white"
-        android:ems="10"
-        android:hint="Masukkan Tanggal Bulan Tahun"
-        android:inputType="textMultiLine"
-        android:paddingLeft="10dp"
-        android:singleLine="false"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@+id/edHargaInputVIP"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edHargaInputVIP"
-        app:layout_constraintTop_toBottomOf="@+id/edHargaInputOutdoor" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="24dp"
-        android:background="@android:color/white"
-        android:onClick="tambahMenu"
-        android:text="Tambahkan Match"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -233,55 +107,190 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edJamInput"
-        android:layout_width="0dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/spinner">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/edNamaInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint="Masukan Nama Match"
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+            <EditText
+                android:id="@+id/edHargaInputVIP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint=" Masukkan Harga VIP"
+                android:inputType="numberSigned"
+                android:paddingLeft="5dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edNamaInput" />
+
+            <EditText
+                android:id="@+id/edHargaInputReguler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint=" Masukkan Harga Reguler"
+                android:inputType="numberSigned"
+                android:paddingLeft="5dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edHargaInputVIP" />
+
+            <EditText
+                android:id="@+id/edHargaInputOutdoor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint=" Masukkan Harga Outdoor"
+                android:inputType="numberSigned"
+                android:paddingLeft="5dp"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edHargaInputReguler" />
+
+            <EditText
+                android:id="@+id/edDeskInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint="Masukkan Tanggal Bulan Tahun"
+                android:inputType="textMultiLine"
+                android:paddingLeft="10dp"
+                android:singleLine="false"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/edHargaInputVIP"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/edHargaInputVIP"
+                app:layout_constraintTop_toBottomOf="@+id/edHargaInputOutdoor" />
+
+            <EditText
+                android:id="@+id/edJamInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint="Masukkan Jam mulai dan jam akhir"
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp"
+
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edDeskInput" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Stadium"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edJamInput" />
+
+            <Spinner
+                android:id="@+id/spinnerStadium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/white"
+                android:entries="@array/Stadium"
+                android:spinnerMode="dialog"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:paddingLeft="10dp"
-        android:textColorHint="@android:color/white"
-        android:backgroundTint="@android:color/white"
-        android:ems="10"
-        android:hint="Masukkan Jam mulai dan jam akhir"
-
-        android:inputType="textPersonName"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edDeskInput" />
-
-    <Spinner
-        android:id="@+id/spinnerStadium"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginBottom="24dp"
         android:background="@android:color/white"
-        android:entries="@array/Stadium"
-        android:spinnerMode="dialog"
+        android:onClick="tambahMenu"
+        android:text="Tambahkan Match"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Stadium"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edJamInput" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

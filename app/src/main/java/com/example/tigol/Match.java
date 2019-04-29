@@ -1,11 +1,14 @@
 package com.example.tigol;
 
 public class Match {
-    private int homeTeam, awayTeam, stadium;
-    private String harga, jam, title, tanggal;
+    private int hargaVIP, hargaOutdoor, hargaReguler, homeTeam, awayTeam, stadium;
+    private String key, jam, title, tanggal;
 
     public int getStadium() {
         return stadium;
+    }
+    public String getKey() {
+        return key;
     }
 
     public int getHomeTeam() {
@@ -24,12 +27,14 @@ public class Match {
         this.awayTeam = awayTeam;
     }
 
-    public String getHarga() {
-        return harga;
+    public int getHargaOutdoor() {
+        return hargaOutdoor;
     }
-
-    public void setHarga(String harga) {
-        this.harga = harga;
+    public int getHargaReguler() {
+        return hargaReguler;
+    }
+    public int getHargaVIP() {
+        return hargaVIP;
     }
 
     public String getJam() {
@@ -56,11 +61,15 @@ public class Match {
         this.tanggal = tanggal;
     }
 
-    public Match(int homeTeam, int awayTeam, int stadium, String harga, String jam, String title, String tanggal) {
+    public Match(String key, int homeTeam, int awayTeam, int stadium, int hargaVIP, int hargaReguler, int hargaOutdoor, String jam, String title, String tanggal) {
+        this.key = key;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.stadium = stadium;
-        this.harga = harga;
+        this.hargaVIP = hargaVIP;
+        this.hargaReguler = hargaReguler;
+        this.hargaOutdoor = hargaOutdoor;
+        this.hargaVIP = hargaVIP;
         this.jam = jam;
         this.title = title;
         this.tanggal = tanggal;

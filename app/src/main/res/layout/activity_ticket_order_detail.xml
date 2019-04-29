@@ -4,270 +4,275 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context=".TicketOrderDetail">
 
-    <android.support.constraint.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Jam Pertandingan"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_tiketTanggal" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Waktu Pertandingan"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ticketStadium" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp">
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Stadium"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ticketAway" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:gravity="center"
-            android:text="Ticket Detail"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:id="@+id/home_image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal_background" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Home Team"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                    <TextView
+                        android:id="@+id/home_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Home" />
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_ticketHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Arema Malang"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="VS"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Away Team"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ticketHome" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_ticketAway"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Persiba Bandung"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                    <ImageView
+                        android:id="@+id/away_image"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal_background" />
 
-        <TextView
-            android:id="@+id/tv_ticketStadium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Stadium Siliwangi"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                    <TextView
+                        android:id="@+id/away_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Away" />
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_tiketTanggal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="16 Mei 2019"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_ticketJam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="09:00 - 11:00"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView24" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
-        <View
-            android:id="@+id/divider4"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_ticketJam" />
+                <TextView
+                    android:id="@+id/versus_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center_horizontal"
+                    android:paddingLeft="30dp"
+                    android:text="VS"
+                    android:textColor="@android:color/black"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@color/colorPrimaryRed"
-            android:text="Order"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                <TextView
+                    android:id="@+id/title_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center_horizontal"
+                    android:paddingLeft="30dp"
+                    android:text="Title"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
-        <Spinner
-            android:id="@+id/spinner5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:entries="@array/Class"
-            android:spinnerMode="dialog"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView26" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp">
 
-        <TextView
-            android:id="@+id/textView26"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Class"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider4" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="60dp">
 
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="45000"
-            android:textColor="@color/colorPrimaryRed"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/button"
-            app:layout_constraintEnd_toEndOf="parent" />
+                    <TextView
+                        android:id="@+id/tanggal_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_horizontal"
+                        android:text="Tanggal"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="4dp"
-            android:ems="10"
-            android:hint="Jumlah"
-            android:inputType="number"
-            app:layout_constraintBottom_toBottomOf="@+id/spinner5"
-            app:layout_constraintStart_toEndOf="@+id/spinner5"
-            app:layout_constraintTop_toTopOf="@+id/spinner5" />
+                    <TextView
+                        android:id="@+id/waktu_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_horizontal"
+                        android:text="waktu"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/textView28"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Rp."
-            android:textColor="@color/colorPrimaryRed"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/button"
-            app:layout_constraintEnd_toStartOf="@+id/textView27" />
+                    <TextView
+                        android:id="@+id/stadion_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="left|center_horizontal"
+                        android:text="Stadion"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView29"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="Harga : "
-            android:textColor="@android:color/black"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/button"
-            app:layout_constraintStart_toStartOf="parent" />
+                    <TextView
+                        android:id="@+id/tanggal_textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="left|center_horizontal"
+                        android:text="Harga"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-    </android.support.constraint.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/hargaOutdoor_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_horizontal"
+                        android:text="outdoor"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/hargaReguler_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_horizontal"
+                        android:text="reguler"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/hargaVIP_textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_horizontal"
+                        android:text="vip"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/submit_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Class"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/class_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:entries="@array/Class"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <EditText
+                    android:id="@+id/jumlah_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Jumlah"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="payment"
+        android:text="GO TO PAYMENT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

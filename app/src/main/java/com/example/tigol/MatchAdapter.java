@@ -1,12 +1,12 @@
 package com.example.tigol;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -123,7 +123,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
                 mTitleText.setText(currentSport.getTitle());
                 mTanggalText.setText(currentSport.getTanggal());
                 mWaktuText.setText(currentSport.getJam());
-                mHargaText.setText(formatRupiah.format(Double.valueOf(currentSport.getHarga())));
+                mHargaText.setText(formatRupiah.format(Double.valueOf(currentSport.getHargaOutdoor())));
                 mHomeText.setText(tim[currentSport.getHomeTeam()]);
                 mAwayText.setText(tim[currentSport.getAwayTeam()]);
 
@@ -144,17 +144,19 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
              */
             @Override
             public void onClick(View view) {
-//                Match currentSport = mSportsData.get(getAdapterPosition());
-//                Intent detailIntent = new Intent(mContext, DetailTernak.class);
-//                detailIntent.putExtra("name", currentSport.getJenis());
-//                detailIntent.putExtra("jenis", currentSport.getTitle());
-//                detailIntent.putExtra("umur", currentSport.getUmur());
-//                detailIntent.putExtra("lokasi", currentSport.getLokasi());
-//                detailIntent.putExtra("hargaBeli", currentSport.getHargaBeli());
-//                detailIntent.putExtra("hargaJual", currentSport.getHargaJual());
-////                detailIntent.putExtra("image_resource",
-////                        currentSport.getImageResource());
-//                mContext.startActivity(detailIntent);
+                Match currentSport = mSportsData.get(getAdapterPosition());
+                Intent detailIntent = new Intent(mContext, TicketOrderDetail.class);
+                detailIntent.putExtra("key", currentSport.getKey());
+                detailIntent.putExtra("title", currentSport.getTitle());
+                detailIntent.putExtra("tanggal", currentSport.getTanggal());
+                detailIntent.putExtra("jam", currentSport.getJam());
+                detailIntent.putExtra("outdoor", currentSport.getHargaOutdoor());
+                detailIntent.putExtra("reguler", currentSport.getHargaReguler());
+                detailIntent.putExtra("vip", currentSport.getHargaVIP());
+                detailIntent.putExtra("home", currentSport.getHomeTeam());
+                detailIntent.putExtra("away", currentSport.getAwayTeam());
+                detailIntent.putExtra("stadium", currentSport.getStadium());
+                mContext.startActivity(detailIntent);
             }
         }
     }

@@ -44,7 +44,7 @@ public class UploadMatch extends AppCompatActivity {
     Uri uri;
     Spinner spinnerHome, spinnerAway, spinnerStadium;
     String imagePath;
-    EditText namamatch, harga, tanggal, waktu;
+    EditText namamatch, hargaVIP, hargaReguler, hargaOutdoor, tanggal, waktu;
 
     FirebaseStorage storage;
     StorageReference storageReference;
@@ -68,7 +68,9 @@ public class UploadMatch extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         namamatch = findViewById(R.id.edNamaInput);
-        harga = findViewById(R.id.edHargaInputVIP);
+        hargaOutdoor = findViewById(R.id.edHargaInputOutdoor);
+        hargaReguler = findViewById(R.id.edHargaInputReguler);
+        hargaVIP = findViewById(R.id.edHargaInputVIP);
         tanggal = findViewById(R.id.edDeskInput);
         waktu = findViewById(R.id.edJamInput);
         spinnerHome = findViewById(R.id.spinner);
@@ -115,13 +117,16 @@ public class UploadMatch extends AppCompatActivity {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Match");
         String key = ref.push().getKey();
         ref = ref.child(key);
+        ref.child("key").setValue(key);
         ref.child("nama").setValue(namamatch.getText().toString());
-        ref.child("Home").setValue(spinnerHome.getSelectedItemId());
-        ref.child("Away").setValue(spinnerAway.getSelectedItemId());
-        ref.child("harga").setValue(harga.getText().toString());
+        ref.child("Home").setValue(spinnerHome.getSelectedItemPosition());
+        ref.child("Away").setValue(spinnerAway.getSelectedItemPosition());
+        ref.child("hargaOutdoor").setValue(Integer.valueOf(hargaOutdoor.getText().toString()));
+        ref.child("hargaReguler").setValue(Integer.valueOf(hargaReguler.getText().toString()));
+        ref.child("hargaVIP").setValue(Integer.valueOf(hargaVIP.getText().toString()));
         ref.child("tanggal").setValue(tanggal.getText().toString());
         ref.child("jam").setValue(waktu.getText().toString());
-        ref.child("stadium").setValue(spinnerStadium.getSelectedItemId());
+        ref.child("stadium").setValue(spinnerStadium.getSelectedItemPosition());
         finish();
 
 //        new AsyncTask<Void, Boolean, Boolean>() {
@@ -148,7 +153,7 @@ public class UploadMatch extends AppCompatActivity {
 //            @Override
 //            protected Boolean doInBackground(Void... voids) {
 //                menu.put("NamaMenu", namamatch.getText().toString());
-//                menu.put("Harga", harga.getText().toString());
+//                menu.put("Harga", hargaVIP.getText().toString());
 //                menu.put("Deskripsi", tanggal.getText().toString());
 //                menu.put("Waktu",waktu.getText().toString());
 //                menu.put("Date",new SimpleDateFormat().format(new Date()));
