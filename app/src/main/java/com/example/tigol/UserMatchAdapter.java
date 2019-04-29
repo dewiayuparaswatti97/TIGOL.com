@@ -14,7 +14,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class MyMatchAdapter extends RecyclerView.Adapter<MyMatchAdapter.ViewHolder>  {
+public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.ViewHolder>  {
 
         // Member variables.
         private ArrayList<MyMatch> mSportsData;
@@ -26,7 +26,7 @@ public class MyMatchAdapter extends RecyclerView.Adapter<MyMatchAdapter.ViewHold
          * @param sportsData ArrayList containing the sports data.
          * @param context Context of the application.
          */
-        MyMatchAdapter(Context context, ArrayList<MyMatch> sportsData) {
+        UserMatchAdapter(Context context, ArrayList<MyMatch> sportsData) {
             this.mSportsData = sportsData;
             this.mContext = context;
         }
@@ -41,10 +41,10 @@ public class MyMatchAdapter extends RecyclerView.Adapter<MyMatchAdapter.ViewHold
          * @return The newly created ViewHolder.
          */
         @Override
-        public MyMatchAdapter.ViewHolder onCreateViewHolder(
+        public UserMatchAdapter.ViewHolder onCreateViewHolder(
                 ViewGroup parent, int viewType) {
             return new ViewHolder(LayoutInflater.from(mContext)
-                    .inflate(R.layout.my_match_list, parent, false));
+                    .inflate(R.layout.user_match_list, parent, false));
         }
 
         /**
@@ -54,7 +54,7 @@ public class MyMatchAdapter extends RecyclerView.Adapter<MyMatchAdapter.ViewHold
          * @param position The adapter position.
          */
         @Override
-        public void onBindViewHolder(MyMatchAdapter.ViewHolder holder,
+        public void onBindViewHolder(UserMatchAdapter.ViewHolder holder,
                                      int position) {
             // Get current sport.
             MyMatch currentSport = mSportsData.get(position);
@@ -83,6 +83,7 @@ public class MyMatchAdapter extends RecyclerView.Adapter<MyMatchAdapter.ViewHold
 
             // Member Variables for the TextViews
             private TextView mTitleText;
+            private TextView mUserText;
             private TextView mTanggalText;
             private TextView mWaktuText;
             private TextView mHargaText;
@@ -104,6 +105,7 @@ public class MyMatchAdapter extends RecyclerView.Adapter<MyMatchAdapter.ViewHold
 
                 // Initialize the views.
                 mTitleText = itemView.findViewById(R.id.title_textView);
+                mUserText = itemView.findViewById(R.id.pembeli_textView);
                 mTanggalText = itemView.findViewById(R.id.tanggal_textView);
                 mWaktuText = itemView.findViewById(R.id.waktu_textView);
                 mSeatText = itemView.findViewById(R.id.seat_textView);
@@ -128,6 +130,7 @@ public class MyMatchAdapter extends RecyclerView.Adapter<MyMatchAdapter.ViewHold
                 Locale localeID = new Locale("in", "ID");
                 final NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
                 mTitleText.setText(currentSport.getTitle());
+                mUserText.setText(currentSport.getNamaUser());
                 mTanggalText.setText(currentSport.getTanggal());
                 mWaktuText.setText(currentSport.getJam());
                 mHargaText.setText(formatRupiah.format(Double.valueOf(currentSport.getHargaOutdoor())));

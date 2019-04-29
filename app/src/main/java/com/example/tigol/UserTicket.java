@@ -1,8 +1,8 @@
 package com.example.tigol;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-public class MyTicket extends AppCompatActivity {
+public class UserTicket extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<Card> daftar;
@@ -29,7 +29,7 @@ public class MyTicket extends AppCompatActivity {
     DatabaseReference orderMatch = FirebaseDatabase.getInstance().getReference("orderMatch");
     DatabaseReference match = FirebaseDatabase.getInstance().getReference("Match");
     private ArrayList<MyMatch> mWorkerData;
-    private MyMatchAdapter mAdapter;
+    private UserMatchAdapter mAdapter;
     int timId;
     int stadionId;
 
@@ -48,7 +48,7 @@ public class MyTicket extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_ticket);
+        setContentView(R.layout.activity_user_ticket);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -59,7 +59,7 @@ public class MyTicket extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rvMain);
         daftar = new ArrayList<>();
-        recyclerView.setLayoutManager(new LinearLayoutManager(MyTicket.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(UserTicket.this));
         db = FirebaseFirestore.getInstance();
         Log.d("TimID", String.valueOf(timId));
 //        match.orderByChild('Firstname').equalTo().addValueEventListener(new ValueEventListener() {
@@ -104,7 +104,7 @@ public class MyTicket extends AppCompatActivity {
                                     mWorkerData.add(ternak);
                                 }
                                 Log.d("getMatch-out", String.valueOf(hargaOutdoor));
-                                mAdapter = new MyMatchAdapter(MyTicket.this, mWorkerData);
+                                mAdapter = new UserMatchAdapter(UserTicket.this, mWorkerData);
                                 recyclerView.setAdapter(mAdapter);
 
                             }
