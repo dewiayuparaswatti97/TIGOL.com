@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,11 +28,13 @@ public class OrderTiket extends AppCompatActivity {
     int seat;
     int kelas;
     int total;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_tiket);
+        mAuth = FirebaseAuth.getInstance();
 
         jumlah_textView = findViewById(R.id.jumlah_textView);
 
@@ -74,6 +77,7 @@ public class OrderTiket extends AppCompatActivity {
         ref = ref.child(key);
         ref.child("key").setValue(key);
         ref.child("match").setValue(getIntent().getExtras().getString("key"));
+        ref.child("userID").setValue(mAuth.getCurrentUser().getUid());
         ref.child("user").setValue(nama);
         ref.child("seat").setValue(seat);
         ref.child("total").setValue(total);

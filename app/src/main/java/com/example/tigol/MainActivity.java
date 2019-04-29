@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         frAuth = FirebaseAuth.getInstance();
         btnLogoutMain = findViewById(R.id.btn_logoutmain);
+        btnYourticket = findViewById(R.id.btn_yourticket);
         fabMain = findViewById(R.id.fabMain);
         spinnerTim = findViewById(R.id.tim_spinner);
         spinnerStadion = findViewById(R.id.stadion_spinner);
@@ -39,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
                 frAuth.signOut();
                 Intent intent = new Intent(MainActivity.this, LoginPage.class);
                 Toast.makeText(MainActivity.this, "Sign-out Berhasil!", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
+        });
+
+        btnYourticket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MyTicket.class);
+                intent.putExtra("timId", spinnerTim.getSelectedItemPosition());
+                intent.putExtra("stadionId", spinnerStadion.getSelectedItemPosition());
                 startActivity(intent);
             }
         });

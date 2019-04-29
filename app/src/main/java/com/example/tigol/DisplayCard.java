@@ -116,7 +116,7 @@ public class DisplayCard extends AppCompatActivity {
             }
         });
 
-        init();
+//        init();
 
     }
 
