@@ -15,6 +15,7 @@ public class MainAdmin extends AppCompatActivity {
     private FirebaseAuth frAuth;
     private Button btnLogoutMain;
     private Button btnRegisterMatch;
+    private Button btnPayment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class MainAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_main_admin);
         frAuth = FirebaseAuth.getInstance();
         btnRegisterMatch = findViewById(R.id.btnRegisterMatch);
+        btnPayment = findViewById(R.id.btnPaymentCheck);
         btnLogoutMain = findViewById(R.id.btn_logoutadmin);
 
         btnLogoutMain.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +34,14 @@ public class MainAdmin extends AppCompatActivity {
                 frAuth.signOut();
                 Intent intent = new Intent(MainAdmin.this, LoginPage.class);
                 Toast.makeText(MainAdmin.this, "Sign-out Berhasil!", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
+        });
+
+        btnPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainAdmin.this, UserTicket.class);
                 startActivity(intent);
             }
         });

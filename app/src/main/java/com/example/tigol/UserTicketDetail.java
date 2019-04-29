@@ -18,11 +18,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -38,7 +41,7 @@ import java.util.Locale;
 import id.zelory.compressor.Compressor;
 
 
-public class MyTicketDetail extends AppCompatActivity {
+public class UserTicketDetail extends AppCompatActivity {
 
     private TextView mTitleText;
     private TextView mTanggalText;
@@ -71,7 +74,7 @@ public class MyTicketDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_ticket_detail);
+        setContentView(R.layout.activity_user_ticket_detail);
 
         key = getIntent().getExtras().getString("key");
 
@@ -125,10 +128,16 @@ public class MyTicketDetail extends AppCompatActivity {
         mHomeImage.setImageResource(imgs.getResourceId(getIntent().getExtras().getInt("home"), -1));
         mAwayImage.setImageResource(imgs.getResourceId(getIntent().getExtras().getInt("away"), -1));
 
+        StorageReference islandRef1 = FirebaseStorage.getInstance().getReference().child("images/" + key);
+        
+        Glide.with(this)
+                .load(islandRef1)
+                .into(mPhotoImage);
+
         firstPhoto_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectImage();
+
             }
         });
     }
@@ -164,17 +173,17 @@ public class MyTicketDetail extends AppCompatActivity {
     }
 
     private void selectImage(){
-        if (ContextCompat.checkSelfPermission(MyTicketDetail.this,
+        if (ContextCompat.checkSelfPermission(UserTicketDetail.this,
                 Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MyTicketDetail.this,
+            ActivityCompat.requestPermissions(UserTicketDetail.this,
                     new String[]{Manifest.permission.CAMERA},
                     REQUEST);
         } else {
             CropImage.activity()
                     .setGuidelines(CropImageView.Guidelines.ON)
 //                    .setAspectRatio(1, 1)
-                    .start(MyTicketDetail.this);
+                    .start(UserTicketDetail.this);
         }
     }
 
@@ -183,29 +192,49 @@ public class MyTicketDetail extends AppCompatActivity {
     }
 
     public void upload(View view) {
-        StorageReference ref = storageReference.child("images/" + key);
-        ref.putFile(newUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                                                                imgNumberSuccess++;
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("orderMatch");
+        ref = ref.child(key);
+        ref.child("verified").setValue(true);
+        finish();
 
-                    }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                Log.d("UploadImage", String.valueOf(progress) + "%");
-                if (progress == 100) {
-                    Snackbar.make(findViewById(R.id.detail_layoutView), "Bukti Pembayaran berhasil diupload", Snackbar.LENGTH_LONG).setDuration(2000).show();
-                }
-            }
-        });
+//        db.collection("orderMatch").or.document("verified").update(
+//                "imageUploaded", true
+//        ).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if (task.isSuccessful()) {
+//                    Helper.snack(layout, "Donasi berhasil diupload");
+//                    onRefresh();
+//                    //Do something
+//                } else {
+//                    //Do another thing
+//                }
+//            }
+//        });
+
+//        StorageReference ref = storageReference.child("images/" + key);
+//        ref.putFile(newUri)
+//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+////                                                                imgNumberSuccess++;
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//
+//                    }
+//                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+//                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+//                Log.d("UploadImage", String.valueOf(progress) + "%");
+//                if (progress == 100) {
+//                    Snackbar.make(findViewById(R.id.detail_layoutView), "Bukti Pembayaran berhasil diupload", Snackbar.LENGTH_LONG).setDuration(2000).show();
+//                }
+//            }
+//        });
     }
 
 //

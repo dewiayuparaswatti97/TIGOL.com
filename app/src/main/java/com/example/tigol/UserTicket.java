@@ -30,8 +30,8 @@ public class UserTicket extends AppCompatActivity {
     DatabaseReference match = FirebaseDatabase.getInstance().getReference("Match");
     private ArrayList<MyMatch> mWorkerData;
     private UserMatchAdapter mAdapter;
-    int timId;
-    int stadionId;
+//    int timId;
+//    int stadionId;
 
     int homeTeam;
     int awayTeam;
@@ -54,16 +54,16 @@ public class UserTicket extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         progressBarMain = findViewById(R.id.progressBar2);
 
-        timId = getIntent().getExtras().getInt("timId");
-        stadionId = getIntent().getExtras().getInt("stadionId");
+//        timId = getIntent().getExtras().getInt("timId");
+//        stadionId = getIntent().getExtras().getInt("stadionId");
 
         recyclerView = findViewById(R.id.rvMain);
         daftar = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(UserTicket.this));
         db = FirebaseFirestore.getInstance();
-        Log.d("TimID", String.valueOf(timId));
+//        Log.d("TimID", String.valueOf(timId));
 //        match.orderByChild('Firstname').equalTo().addValueEventListener(new ValueEventListener() {
-        orderMatch.orderByChild("userID").equalTo(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+        orderMatch.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

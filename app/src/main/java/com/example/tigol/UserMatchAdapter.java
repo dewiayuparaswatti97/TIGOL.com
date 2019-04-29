@@ -158,7 +158,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.View
             @Override
             public void onClick(View view) {
                 MyMatch currentSport = mSportsData.get(getAdapterPosition());
-                Intent detailIntent = new Intent(mContext, MyTicketDetail.class);
+                Intent detailIntent = new Intent(mContext, UserTicketDetail.class);
                 detailIntent.putExtra("key", currentSport.getKey());
                 detailIntent.putExtra("namauser", currentSport.getNamaUser());
                 detailIntent.putExtra("metode", currentSport.getMetode());

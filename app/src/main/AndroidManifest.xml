@@ -12,8 +12,10 @@
         <activity android:name=".PaymentVerification"></activity>
         <activity android:name=".CardVerfication" />
         <activity android:name=".MyTicket" />
+        <activity android:name=".UserTicket" />
         <activity android:name=".TicketOrderDetail" />
         <activity android:name=".MyTicketDetail" />
+        <activity android:name=".UserTicketDetail" />
         <activity android:name=".OrderTiket" />
         <activity
             android:name=".UploadMatch"
