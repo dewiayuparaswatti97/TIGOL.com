@@ -164,6 +164,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.View
                 detailIntent.putExtra("metode", currentSport.getMetode());
                 detailIntent.putExtra("seat", currentSport.getSeat());
                 detailIntent.putExtra("verified", mStatusText.getText().toString());
+                detailIntent.putExtra("verify", currentSport.isVerified());
                 detailIntent.putExtra("total", currentSport.getTotal());
                 detailIntent.putExtra("title", currentSport.getTitle());
                 detailIntent.putExtra("tanggal", currentSport.getTanggal());

@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -69,7 +70,7 @@ public class UserTicketDetail extends AppCompatActivity {
     FirebaseStorage storage;
     FirebaseFirestore db;
     String key;
-
+    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +93,7 @@ public class UserTicketDetail extends AppCompatActivity {
         mStadionText = findViewById(R.id.stadion_textView);
         mPhotoImage = findViewById(R.id.photo_imageView);
         db = FirebaseFirestore.getInstance();
-
+        submit = findViewById(R.id.submit_btn);
         mHomeImage = findViewById(R.id.home_image);
         mAwayImage = findViewById(R.id.away_image);
         firstPhoto_card = findViewById(R.id.firstPhoto_cardView);
@@ -124,15 +125,28 @@ public class UserTicketDetail extends AppCompatActivity {
         mStadionText.setText(stadion[getIntent().getExtras().getInt("stadium")]);
         mVersusText.setText(mHomeText.getText() + " VS " + mAwayText.getText());
 
+        if (getIntent().getExtras().getBoolean("verify")) {
+            submit.setText("UNVERIFIED");
+        }
+
         final TypedArray imgs = getResources().obtainTypedArray(R.array.DaftarGambar);
         mHomeImage.setImageResource(imgs.getResourceId(getIntent().getExtras().getInt("home"), -1));
         mAwayImage.setImageResource(imgs.getResourceId(getIntent().getExtras().getInt("away"), -1));
 
         StorageReference islandRef1 = FirebaseStorage.getInstance().getReference().child("images/" + key);
-        
-        Glide.with(this)
-                .load(islandRef1)
-                .into(mPhotoImage);
+        islandRef1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+//                imageURL = uri.toString();
+                Log.d("keynya1", uri.toString());
+                Glide.with(getApplicationContext()).load(uri.toString()).into(mPhotoImage);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
 
         firstPhoto_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,7 +186,7 @@ public class UserTicketDetail extends AppCompatActivity {
         }
     }
 
-    private void selectImage(){
+    private void selectImage() {
         if (ContextCompat.checkSelfPermission(UserTicketDetail.this,
                 Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -187,71 +201,20 @@ public class UserTicketDetail extends AppCompatActivity {
         }
     }
 
-    public void selectImage(View view){
+    public void selectImage(View view) {
         selectImage();
     }
 
     public void upload(View view) {
+
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("orderMatch");
         ref = ref.child(key);
-        ref.child("verified").setValue(true);
+        if (getIntent().getExtras().getBoolean("verify"))
+            ref.child("verified").setValue(false);
+        else
+            ref.child("verified").setValue(true);
         finish();
-
-//        db.collection("orderMatch").or.document("verified").update(
-//                "imageUploaded", true
-//        ).addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                if (task.isSuccessful()) {
-//                    Helper.snack(layout, "Donasi berhasil diupload");
-//                    onRefresh();
-//                    //Do something
-//                } else {
-//                    //Do another thing
-//                }
-//            }
-//        });
-
-//        StorageReference ref = storageReference.child("images/" + key);
-//        ref.putFile(newUri)
-//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-////                                                                imgNumberSuccess++;
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//
-//                    }
-//                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-//                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-//                Log.d("UploadImage", String.valueOf(progress) + "%");
-//                if (progress == 100) {
-//                    Snackbar.make(findViewById(R.id.detail_layoutView), "Bukti Pembayaran berhasil diupload", Snackbar.LENGTH_LONG).setDuration(2000).show();
-//                }
-//            }
-//        });
     }
 
-//
-//    public void payment(View view){
-//        Intent orderTiket = new Intent(MyTicketDetail.this, OrderTiket.class);
-//        orderTiket.putExtra("key", getIntent().getExtras().getString("key"));
-//        orderTiket.putExtra("title", getIntent().getExtras().getString("title"));
-//        orderTiket.putExtra("tanggal", getIntent().getExtras().getString("tanggal"));
-//        orderTiket.putExtra("jam", getIntent().getExtras().getString("jam"));
-//        orderTiket.putExtra("outdoor", getIntent().getExtras().getInt("outdoor"));
-//        orderTiket.putExtra("reguler", getIntent().getExtras().getInt("reguler"));
-//        orderTiket.putExtra("vip", getIntent().getExtras().getInt("vip"));
-//        orderTiket.putExtra("home", getIntent().getExtras().getInt("home"));
-//        orderTiket.putExtra("away", getIntent().getExtras().getInt("away"));
-//        orderTiket.putExtra("stadium", getIntent().getExtras().getInt("stadium"));
-//        orderTiket.putExtra("jumlah", Integer.valueOf(mJumlahED.getText().toString()));
-//        orderTiket.putExtra("class", mClassSpinner.getSelectedItemPosition());
-//        startActivity(orderTiket);
-//    }
 }

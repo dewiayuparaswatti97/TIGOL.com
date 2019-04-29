@@ -125,6 +125,24 @@ public class MyTicketDetail extends AppCompatActivity {
         mHomeImage.setImageResource(imgs.getResourceId(getIntent().getExtras().getInt("home"), -1));
         mAwayImage.setImageResource(imgs.getResourceId(getIntent().getExtras().getInt("away"), -1));
 
+        StorageReference islandRef1 = FirebaseStorage.getInstance().getReference().child("images/" + key);
+        islandRef1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+//                imageURL = uri.toString();
+                Log.d("keynya1", uri.toString());
+                Glide.with(getApplicationContext()).load(uri.toString()).into(mPhotoImage);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+//        Glide.with(this)
+//                .load(islandRef1)
+//                .into(mPhotoImage);
+
         firstPhoto_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
