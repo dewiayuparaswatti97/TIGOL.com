@@ -6,17 +6,99 @@
     android:layout_height="match_parent"
     tools:context=".OrderTiket">
 
-    <Button
-        android:id="@+id/submit_btn"
-        android:layout_width="0dp"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="GO TO PAYMENT"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Total Payment"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/jumlah_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Jumlah"
+                android:textColor="@android:color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Choose your payment metode"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:id="@+id/metode_radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp">
+
+                <RadioButton
+                    android:id="@+id/metode1_radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Credit Card"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/metode2_radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:text="Alfamart"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/metode3_radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:text="Indomart"
+                    android:textSize="18sp" />
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="checkout"
+        android:text="CHECKOUT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 </android.support.constraint.ConstraintLayout>

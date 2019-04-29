@@ -1,6 +1,8 @@
 package com.example.tigol;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -79,12 +81,18 @@ public class LoginPage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid()).child("status");
+                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getCurrentUser().getUid());
                             ref.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     Intent intent;
-                                    if (dataSnapshot.getValue().equals("Admin")){
+
+                                    SharedPreferences sharedpreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                                    editor.putString("nama",dataSnapshot.child("nama").getValue(String.class));
+                                    editor.commit();
+
+                                    if (dataSnapshot.child("status").getValue().equals("Admin")){
                                         intent = new Intent(LoginPage.this, MainAdmin.class);
                                     }
                                     else {
@@ -98,7 +106,6 @@ public class LoginPage extends AppCompatActivity {
 
                                 }
                             });
-
 
                         } else {
                             Toast.makeText(LoginPage.this, "Login Gagal", Toast.LENGTH_LONG).show();

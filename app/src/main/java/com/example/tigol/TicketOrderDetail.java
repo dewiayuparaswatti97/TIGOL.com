@@ -78,19 +78,19 @@ public class TicketOrderDetail extends AppCompatActivity {
     }
 
     public void payment(View view){
-        Intent detailIntent = new Intent(TicketOrderDetail.this, OrderTiket.class);
-        detailIntent.putExtra("key", getIntent().getExtras().getInt("key"));
-        detailIntent.putExtra("title", getIntent().getExtras().getString("title"));
-        detailIntent.putExtra("tanggal", getIntent().getExtras().getString("tanggal"));
-        detailIntent.putExtra("jam", getIntent().getExtras().getString("jam"));
-        detailIntent.putExtra("outdoor", getIntent().getExtras().getInt("outdoor"));
-        detailIntent.putExtra("reguler", getIntent().getExtras().getInt("reguler"));
-        detailIntent.putExtra("vip", getIntent().getExtras().getInt("vip"));
-        detailIntent.putExtra("home", getIntent().getExtras().getInt("home"));
-        detailIntent.putExtra("away", getIntent().getExtras().getInt("away"));
-        detailIntent.putExtra("stadium", getIntent().getExtras().getInt("stadium"));
-        detailIntent.putExtra("jumlah", Integer.valueOf(mJumlahED.getText().toString()));
-        detailIntent.putExtra("class", mClassSpinner.getSelectedItemPosition());
-        startActivity(detailIntent);
+        Intent orderTiket = new Intent(TicketOrderDetail.this, OrderTiket.class);
+        orderTiket.putExtra("key", getIntent().getExtras().getString("key"));
+        orderTiket.putExtra("title", getIntent().getExtras().getString("title"));
+        orderTiket.putExtra("tanggal", getIntent().getExtras().getString("tanggal"));
+        orderTiket.putExtra("jam", getIntent().getExtras().getString("jam"));
+        orderTiket.putExtra("outdoor", getIntent().getExtras().getInt("outdoor"));
+        orderTiket.putExtra("reguler", getIntent().getExtras().getInt("reguler"));
+        orderTiket.putExtra("vip", getIntent().getExtras().getInt("vip"));
+        orderTiket.putExtra("home", getIntent().getExtras().getInt("home"));
+        orderTiket.putExtra("away", getIntent().getExtras().getInt("away"));
+        orderTiket.putExtra("stadium", getIntent().getExtras().getInt("stadium"));
+        orderTiket.putExtra("jumlah", Integer.valueOf(mJumlahED.getText().toString()));
+        orderTiket.putExtra("class", mClassSpinner.getSelectedItemPosition());
+        startActivity(orderTiket);
     }
 }
