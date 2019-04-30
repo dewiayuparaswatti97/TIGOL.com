@@ -3,7 +3,7 @@ package com.example.tigol;
 public class MyMatch {
     private int hargaVIP, hargaOutdoor, hargaReguler, homeTeam, awayTeam, stadium, seat, total;
     private String key, jam, title, tanggal, namaUser, userId, metode;
-    private boolean verified;
+    private int verified;
 
     public int getSeat() {
         return seat;
@@ -26,7 +26,11 @@ public class MyMatch {
     }
 
     public boolean isVerified() {
-        return verified;
+        return verified == 2;
+    }
+
+    public boolean isRejected() {
+        return verified == 0;
     }
 
     public int getStadium() {
@@ -89,7 +93,7 @@ public class MyMatch {
         this.tanggal = tanggal;
     }
 
-    public MyMatch(String key, String namaUser, String userId, String metode, int seat, int total, boolean verified,
+    public MyMatch(String key, String namaUser, String userId, String metode, int seat, int total, int status,
                    int homeTeam, int awayTeam, int stadium, int hargaVIP, int hargaReguler, int hargaOutdoor,
                    String jam, String title, String tanggal) {
         this.key = key;
@@ -99,7 +103,7 @@ public class MyMatch {
         this.metode = metode;
         this.seat = seat;
         this.total = total;
-        this.verified = verified;
+        this.verified = status;
 
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;

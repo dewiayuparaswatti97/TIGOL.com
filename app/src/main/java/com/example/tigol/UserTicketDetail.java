@@ -71,6 +71,8 @@ public class UserTicketDetail extends AppCompatActivity {
     FirebaseFirestore db;
     String key;
     Button submit;
+    Button reject;
+    View line;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,9 +99,11 @@ public class UserTicketDetail extends AppCompatActivity {
         mHomeImage = findViewById(R.id.home_image);
         mAwayImage = findViewById(R.id.away_image);
         firstPhoto_card = findViewById(R.id.firstPhoto_cardView);
+        line = findViewById(R.id.line);
 
         mClassSpinner = findViewById(R.id.class_spinner);
         mJumlahED = findViewById(R.id.jumlah_editText);
+        reject = findViewById(R.id.reject_btn);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
@@ -125,10 +129,23 @@ public class UserTicketDetail extends AppCompatActivity {
         mStadionText.setText(stadion[getIntent().getExtras().getInt("stadium")]);
         mVersusText.setText(mHomeText.getText() + " VS " + mAwayText.getText());
 
-        if (getIntent().getExtras().getBoolean("verify")) {
-            submit.setText("UNVERIFIED");
+        if (getIntent().getExtras().getBoolean("rejected")) {
+            reject.setText("UNREJECT");
+            submit.setVisibility(View.GONE);
+            firstPhoto_card.setVisibility(View.GONE);
+            line.setVisibility(View.GONE);
+        }else{
+            if (getIntent().getExtras().getBoolean("verify")){
+                submit.setText("UNVERIFIED");
+                firstPhoto_card.setVisibility(View.GONE);
+                line.setVisibility(View.GONE);
+            }
+            else
+                firstPhoto_card.setVisibility(View.VISIBLE);
         }
 
+        if (getIntent().getExtras().getBoolean("verify")) {
+        }
         final TypedArray imgs = getResources().obtainTypedArray(R.array.DaftarGambar);
         mHomeImage.setImageResource(imgs.getResourceId(getIntent().getExtras().getInt("home"), -1));
         mAwayImage.setImageResource(imgs.getResourceId(getIntent().getExtras().getInt("away"), -1));
@@ -137,16 +154,17 @@ public class UserTicketDetail extends AppCompatActivity {
         islandRef1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-//                imageURL = uri.toString();
-                Log.d("keynya1", uri.toString());
                 Glide.with(getApplicationContext()).load(uri.toString()).into(mPhotoImage);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle any errors
+                firstPhoto_card.setVisibility(View.GONE);
             }
         });
+
+
 
         firstPhoto_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,15 +224,41 @@ public class UserTicketDetail extends AppCompatActivity {
     }
 
     public void upload(View view) {
-
-
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("orderMatch");
         ref = ref.child(key);
-        if (getIntent().getExtras().getBoolean("verify"))
-            ref.child("verified").setValue(false);
-        else
-            ref.child("verified").setValue(true);
+//        if (getIntent().getExtras().getBoolean("verify"))
+//            ref.child("verified").setValue(1);
+//        else
+//            ref.child("verified").setValue(2);
+//        finish();
+//        startActivity(getIntent());
+
+        Intent intent = getIntent();
+        if (getIntent().getExtras().getBoolean("verify")){
+            intent.putExtra("verify", false);
+            ref.child("verified").setValue(1);
+        }
+        else{
+            intent.putExtra("verify", true);
+            ref.child("verified").setValue(2);
+        }
         finish();
+        startActivity(intent);
+    }
+    public void reject(View view) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("orderMatch");
+        ref = ref.child(key);
+        Intent intent = getIntent();
+        if (getIntent().getExtras().getBoolean("rejected")){
+            intent.putExtra("rejected", false);
+            ref.child("verified").setValue(1);
+        }
+        else{
+            intent.putExtra("rejected", true);
+            ref.child("verified").setValue(0);
+        }
+        finish();
+        startActivity(intent);
     }
 
 }

@@ -82,7 +82,7 @@ public class OrderTiket extends AppCompatActivity {
         ref.child("seat").setValue(seat);
         ref.child("total").setValue(total);
         ref.child("metode").setValue(selectedtext);
-        ref.child("verified").setValue(false);
+        ref.child("verified").setValue(1);
 
         Toast.makeText(this, "Order Berhasil, silahkan Bayar", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(OrderTiket.this, MainActivity.class);

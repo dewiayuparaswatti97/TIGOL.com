@@ -99,6 +99,7 @@ public class LoginPage extends AppCompatActivity {
                                         intent = new Intent(LoginPage.this, MainActivity.class);
                                     }
                                     startActivity(intent);
+                                    finish();
                                 }
 
                                 @Override

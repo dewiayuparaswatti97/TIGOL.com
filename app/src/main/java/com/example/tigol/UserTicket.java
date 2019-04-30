@@ -81,7 +81,7 @@ public class UserTicket extends AppCompatActivity {
                         final String userID = ds.child("userID").getValue(String.class);
                         final int seat = ds.child("seat").getValue(Integer.class);
                         final int total = ds.child("total").getValue(Integer.class);
-                        final boolean verified = ds.child("verified").getValue(Boolean.class);
+                        final int verified = ds.child("verified").getValue(Integer.class);
 
                         match.orderByChild("key").equalTo(matchId).addValueEventListener(new ValueEventListener() {
                             @Override

@@ -60,13 +60,14 @@ public class MyTicketDetail extends AppCompatActivity {
     private Spinner mClassSpinner;
     private EditText mJumlahED;
     CardView firstPhoto_card;
+    CardView cardView;
     int REQUEST = 91;
     Uri newUri;
     StorageReference storageReference;
     FirebaseStorage storage;
     FirebaseFirestore db;
     String key;
-
+    View line;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +94,8 @@ public class MyTicketDetail extends AppCompatActivity {
         mHomeImage = findViewById(R.id.home_image);
         mAwayImage = findViewById(R.id.away_image);
         firstPhoto_card = findViewById(R.id.firstPhoto_cardView);
+        cardView = findViewById(R.id.cardView);
+        line = findViewById(R.id.line);
 
         mClassSpinner = findViewById(R.id.class_spinner);
         mJumlahED = findViewById(R.id.jumlah_editText);
@@ -130,7 +133,6 @@ public class MyTicketDetail extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
 //                imageURL = uri.toString();
-                Log.d("keynya1", uri.toString());
                 Glide.with(getApplicationContext()).load(uri.toString()).into(mPhotoImage);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -139,9 +141,14 @@ public class MyTicketDetail extends AppCompatActivity {
                 // Handle any errors
             }
         });
-//        Glide.with(this)
-//                .load(islandRef1)
-//                .into(mPhotoImage);
+
+        if (!getIntent().getExtras().getBoolean("rejected"))
+            if (getIntent().getExtras().getBoolean("verify"))
+                cardView.setVisibility(View.GONE);
+            else
+                cardView.setVisibility(View.VISIBLE);
+        else
+            cardView.setVisibility(View.GONE);
 
         firstPhoto_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,7 +188,7 @@ public class MyTicketDetail extends AppCompatActivity {
         }
     }
 
-    private void selectImage(){
+    private void selectImage() {
         if (ContextCompat.checkSelfPermission(MyTicketDetail.this,
                 Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -196,7 +203,7 @@ public class MyTicketDetail extends AppCompatActivity {
         }
     }
 
-    public void selectImage(View view){
+    public void selectImage(View view) {
         selectImage();
     }
 

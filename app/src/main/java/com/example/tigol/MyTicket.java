@@ -81,7 +81,7 @@ public class MyTicket extends AppCompatActivity {
                         final String userID = ds.child("userID").getValue(String.class);
                         final int seat = ds.child("seat").getValue(Integer.class);
                         final int total = ds.child("total").getValue(Integer.class);
-                        final boolean verified = ds.child("verified").getValue(Boolean.class);
+                        final int verified = ds.child("verified").getValue(Integer.class);
 
                         match.orderByChild("key").equalTo(matchId).addValueEventListener(new ValueEventListener() {
                             @Override
@@ -117,27 +117,7 @@ public class MyTicket extends AppCompatActivity {
                     }catch (Exception e){
 
                     }
-
-
-//
-//                    String key = ds.child("key").getValue(String.class);
-//                    int homeTeam = ds.child("Home").getValue(Integer.class);
-//                    int awayTeam = ds.child("Away").getValue(Integer.class);
-//                    int stadium = ds.child("stadium").getValue(Integer.class);
-
-//                    int hargaOutdoor = ds.child("hargaOutdoor").getValue(Integer.class);
-//                    int hargaReguler = ds.child("hargaReguler").getValue(Integer.class);
-//                    int hargaVIP = ds.child("hargaVIP").getValue(Integer.class);
-//                    String jam = ds.child("jam").getValue(String.class);
-//                    String title = ds.child("nama").getValue(String.class);
-//                    String tanggal = ds.child("tanggal").getValue(String.class);
-
-
                 }
-
-                // Initialize the adapter and set it to the RecyclerView.
-
-
             }
 
             @Override

@@ -135,7 +135,7 @@ public class MyMatchAdapter extends RecyclerView.Adapter<MyMatchAdapter.ViewHold
                 mAwayText.setText(tim[currentSport.getAwayTeam()]);
                 mSeatText.setText(String.valueOf(currentSport.getSeat()) + " Seat");
                 mStadionText.setText(stadion[currentSport.getStadium()]);
-                mStatusText.setText(currentSport.isVerified() ? "Terbayar" : "Menunggu Konfirmasi Pembayaran");
+                mStatusText.setText(currentSport.isRejected() ? "Ditolak" : currentSport.isVerified() ? "Terverifikasi" : "Menunggu Konfirmasi Pembayaran");
 
                 final TypedArray imgs = mContext.getResources().obtainTypedArray(R.array.DaftarGambar);
                 mHomeImage.setImageResource(imgs.getResourceId(currentSport.getHomeTeam(),-1));
@@ -160,6 +160,8 @@ public class MyMatchAdapter extends RecyclerView.Adapter<MyMatchAdapter.ViewHold
                 detailIntent.putExtra("namauser", currentSport.getNamaUser());
                 detailIntent.putExtra("metode", currentSport.getMetode());
                 detailIntent.putExtra("seat", currentSport.getSeat());
+                detailIntent.putExtra("verify", currentSport.isVerified());
+                detailIntent.putExtra("rejected", currentSport.isRejected());
                 detailIntent.putExtra("verified", mStatusText.getText().toString());
                 detailIntent.putExtra("total", currentSport.getTotal());
                 detailIntent.putExtra("title", currentSport.getTitle());

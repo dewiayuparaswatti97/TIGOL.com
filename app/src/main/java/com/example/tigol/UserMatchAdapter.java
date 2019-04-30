@@ -138,16 +138,11 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.View
                 mAwayText.setText(tim[currentSport.getAwayTeam()]);
                 mSeatText.setText(String.valueOf(currentSport.getSeat()) + " Seat");
                 mStadionText.setText(stadion[currentSport.getStadium()]);
-                mStatusText.setText(currentSport.isVerified() ? "Terbayar" : "Menunggu Konfirmasi Pembayaran");
+                mStatusText.setText(currentSport.isRejected() ? "Ditolak" : currentSport.isVerified() ? "Terverifikasi" : "Menunggu Konfirmasi Pembayaran");
 
                 final TypedArray imgs = mContext.getResources().obtainTypedArray(R.array.DaftarGambar);
                 mHomeImage.setImageResource(imgs.getResourceId(currentSport.getHomeTeam(),-1));
                 mAwayImage.setImageResource(imgs.getResourceId(currentSport.getAwayTeam(),-1));
-
-
-                // Load the images into the ImageView using the Glide library.
-//                Glide.with(mContext).load(
-//                        currentSport.getImageResource()).into(mHomeImage);
             }
 
             /**
@@ -165,6 +160,7 @@ public class UserMatchAdapter extends RecyclerView.Adapter<UserMatchAdapter.View
                 detailIntent.putExtra("seat", currentSport.getSeat());
                 detailIntent.putExtra("verified", mStatusText.getText().toString());
                 detailIntent.putExtra("verify", currentSport.isVerified());
+                detailIntent.putExtra("rejected", currentSport.isRejected());
                 detailIntent.putExtra("total", currentSport.getTotal());
                 detailIntent.putExtra("title", currentSport.getTitle());
                 detailIntent.putExtra("tanggal", currentSport.getTanggal());
